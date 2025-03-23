@@ -49,15 +49,16 @@ class ModelCSSTagLib {
         model.columns.eachWithIndex { col, i ->
 
             def width = col.width ? "width:${col.width};" : ""
+            def hide = col.hide ? "display:none;" : ""
             def textAlign = model.type == 'grid' ? '' : getTextAlign(attrs, col, model.source)
             if (width || textAlign) {
                 if (model.fixedWidth) {
-                    out << INDENT*2 << "table.${tableClass} thead th:nth-child(${i+1}) {${width}}\n"
-                    out << INDENT*2 << "table.${tableClass} td:nth-child(${i+1}) {${textAlign}}\n"
+                    out << INDENT*2 << "table.${tableClass} thead th:nth-child(${i+1}) {${width}${hide}}\n"
+                    out << INDENT*2 << "table.${tableClass} td:nth-child(${i+1}) {${textAlign}${hide}}\n"
                 }
                 else {
-                    out << INDENT*2 << "table.${tableClass} thead th:nth-child(${i+1}) {${width}}\n"
-                    out << INDENT*2 << "table.${tableClass} td:nth-child(${i+1}) {${width}${textAlign}}\n"
+                    out << INDENT*2 << "table.${tableClass} thead th:nth-child(${i+1}) {${width}${hide}}\n"
+                    out << INDENT*2 << "table.${tableClass} td:nth-child(${i+1}) {${width}${textAlign}${hide}}\n"
                 }
             }
         }
