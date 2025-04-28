@@ -300,8 +300,8 @@
 <script id="site-selector-dropdown-template" type="text/html">
 <div data-bind="visible: transients.hideSiteSelection">
     <div>
-        <g:set var="textOnSiteLocation" value="Create or select a location"/>
-        <g:set var="textOnSiteLocation" value="Select a location"/>
+        <g:set var="textOnSiteLocation" value="יצירה או בחירת אתר"/>
+        <g:set var="textOnSiteLocation" value="בחירת אתר"/>
 
         <div class="form-group row">
             <div class="col-sm-12">

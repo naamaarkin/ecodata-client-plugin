@@ -148,7 +148,7 @@ class ModelTagLib {
                 ctx.out << "<span>${model.title}</span>"
             }
             if (model.userAddedRows && ctx.editMode()) {
-                ctx.out << """<button class="btn btn-warning pull-right" data-bind="click:\$parent.${ctx.property}.removeRow"><i class="far fa-trash-alt"></i> ${model.removeRowText ?: "Remove Section"}</button>\n"""
+                ctx.out << """<button class="btn btn-warning pull-right" data-bind="click:\$parent.${ctx.property}.removeRow"><i class="far fa-trash-alt"></i> ${model.removeRowText ?: "הסרה"}</button>\n"""
             }
             ctx.out << "<hr/>"
             ctx.out << "</div>\n"
@@ -161,7 +161,7 @@ class ModelTagLib {
         ctx.out << "<!-- /ko -->\n"
 
         if (model.userAddedRows && ctx.editMode()) {
-            ctx.out << """<button type="button" class="btn btn-success btn-sm add-section" data-bind="click:${ctx.property}.addRow"><i class="fa fa-plus"></i> ${model.addRowText ?: 'Add'}</button>\n"""
+            ctx.out << """<button type="button" class="btn btn-success btn-sm add-section" data-bind="click:${ctx.property}.addRow"><i class="fa fa-plus"></i> ${model.addRowText ?: 'הוספה'}</button>\n"""
         }
     }
 
