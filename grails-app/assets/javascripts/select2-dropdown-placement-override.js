@@ -83,10 +83,10 @@ $.fn.select2.amd.require(["select2/utils",'select2/dropdown/attachBody'], functi
         if (newDirection != null) {
             this.$dropdown
                 .removeClass('select2-dropdown--below select2-dropdown--above')
-                .addClass('select2-dropdown--' + newDirection);
+                .addClass('select2-dropdown--' + newDirection +' dropdown-right');
             this.$container
                 .removeClass('select2-container--below select2-container--above')
-                .addClass('select2-container--' + newDirection);
+                .addClass('select2-container--' + newDirection +' dropdown-right');
         }
 
         this.$dropdownContainer.css(css);

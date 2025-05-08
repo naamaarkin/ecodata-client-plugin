@@ -519,7 +519,7 @@ var SpeciesViewModel = function(data, options, context) {
                 var offset = (pageNum-1) * pageLength;
                 var end = Math.min(offset+pageLength, list.length);
                 var page = list.slice(offset, end);
-                var results = offset > 0 ? page : [{text: "Species List", children: page}];
+                var results = offset > 0 ? page : [{text: "רשימת מינים", children: page}];
             }
             callback({results: results, pagination: {more: end < list.length , page: params.page}});
         }

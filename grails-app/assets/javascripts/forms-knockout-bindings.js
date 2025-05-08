@@ -588,7 +588,7 @@
     ko.bindingHandlers.select2 = {
         init: function(element, valueAccessor, allBindings) {
             var defaults = {
-                placeholder:'Please select...',
+                placeholder:'נא לבחור...',
                 dropdownAutoWidth:true,
                 allowClear:true
             };
