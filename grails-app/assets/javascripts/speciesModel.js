@@ -492,21 +492,21 @@ var SpeciesViewModel = function(data, options, context) {
                             resultArr[i].commonNameMatches = [match.text];
 
                         }
-                        results.push({text: "Species List", children: resultArr});
+                        results.push({text: "רשימת מינים", children: resultArr});
                         suppliedResults = true;
                     }
                     if (!speciesConfig.useAla && speciesConfig.allowUnmatched && term.length >= speciesConfig.unmatchedTermlength) {
-                        results.push({text: "Missing or unidentified species", children: [{id:name, name: _.escape(term), listId:"unmatched"}]});
+                        results.push({text: "מינים חסרים או לא מזוהים", children: [{id:name, name: _.escape(term), listId:"unmatched"}]});
                     }
                     callback({results: results}, false);
                 },
                 function (resultArr) {
                     var results = [];
                     if (resultArr.length > 0) {
-                        results.push({text: "Atlas of Living Australia", children: resultArr});
+                        results.push({text: "המרכז הישראלי למדע אזרחי", children: resultArr});
                     }
                     if (speciesConfig.allowUnmatched && term.length >= speciesConfig.unmatchedTermlength) {
-                        results.push({text: "Missing or unidentified species", children: [{id:name, name:_.escape(term), listId:"unmatched"}]});
+                        results.push({text: "מינים חסרים או לא מזוהים", children: [{id:name, name:_.escape(term), listId:"unmatched"}]});
                     }
                     callback({results:results}, suppliedResults);
                 });

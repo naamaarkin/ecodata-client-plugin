@@ -147,9 +147,7 @@ class ModelTagLib {
             if (model.title) {
                 ctx.out << "<span>${model.title}</span>"
             }
-            if (model.userAddedRows && ctx.editMode()) {
-                ctx.out << """<button class="btn btn-warning pull-right" data-bind="click:\$parent.${ctx.property}.removeRow"><i class="far fa-trash-alt"></i> ${model.removeRowText ?: "הסרה"}</button>\n"""
-            }
+
             ctx.out << "<hr/>"
             ctx.out << "</div>\n"
         }
@@ -157,6 +155,9 @@ class ModelTagLib {
         ctx.out << """<div data-bind=\"attr:{id:'${model.source}-content-'+\$index},expandOnValidate:true\" class="section-content clearfix">\n"""
         viewModelItems(model.items, childContext)
         ctx.out << "</div>\n"
+        if (model.userAddedRows && ctx.editMode()) {
+            ctx.out << """<button class="btn btn-warning pull-left" data-bind="click:\$parent.${ctx.property}.removeRow"><i class="far fa-trash-alt"></i> ${model.removeRowText ?: ""}</button>\n"""
+        }
         ctx.out << "</div>\n"
         ctx.out << "<!-- /ko -->\n"
 

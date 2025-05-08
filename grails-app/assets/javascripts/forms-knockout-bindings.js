@@ -363,9 +363,9 @@
                     return '';
                 }
                 if (!listId) {
-                    return 'Atlas of Living Australia';
+                    return 'המרכז הישראלי למדע אזרחי';
                 }
-                return 'Species List';
+                return 'רשימת מינים';
             }
             var renderItem = function(row) {
 
@@ -521,7 +521,7 @@
             $.fn.select2.amd.require(['select2/species'], function(SpeciesAdapter) {
                 $(element).select2({
                     dataAdapter: SpeciesAdapter,
-                    placeholder:{id:-1, text:'Start typing species name to search...'},
+                    placeholder:{id:-1, text:'לחיפוש מינים נא להתחיל להקליד...'},
                     templateResult: function(data, container) { return self.select2AwareFormatter(data, container, model.formatSearchResult); },
                     templateSelection: function(data, container) { return self.select2AwareFormatter(data, container, model.formatSelectedSpecies); },
                     dropdownAutoWidth: true,

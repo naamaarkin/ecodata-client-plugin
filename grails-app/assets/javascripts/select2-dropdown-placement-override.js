@@ -41,12 +41,12 @@ $.fn.select2.amd.require(["select2/utils",'select2/dropdown/attachBody'], functi
 
         if (this.$element.hasClass("dropdown-right")) {
             var css = {
-                right: right,
+                left: right,
                 top: container.bottom
             };
         } else {
             var css = {
-                left: offset.left,
+                right: offset.left,
                 top: container.bottom
             };
         }
@@ -63,7 +63,7 @@ $.fn.select2.amd.require(["select2/utils",'select2/dropdown/attachBody'], functi
         var parentOffset = $offsetParent.offset();
 
         css.top -= parentOffset.top;
-        css.left -= parentOffset.left;
+        css.right -= parentOffset.left;
 
         if (!isCurrentlyAbove && !isCurrentlyBelow) {
             newDirection = 'below';
