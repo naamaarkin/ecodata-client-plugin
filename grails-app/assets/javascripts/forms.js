@@ -6,6 +6,7 @@
 //= require speciesModel.js
 //= require images.js
 //= require image-gallery.js
+//= require counter.js
 //= require viewModels.js
 
 // returns blank string if the property is undefined, else the value

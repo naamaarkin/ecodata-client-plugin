@@ -51,6 +51,15 @@ $.fn.select2.amd.require(["select2/utils",'select2/dropdown/attachBody'], functi
             };
         }
 
+         // --- Added code: adjust left positioning on small screens ---
+          var dropdownWidth = this.$dropdown.outerWidth(false);
+          var bodyWidth = $("body").outerWidth();
+
+           if (window.innerWidth < 600) { // adjust threshold as needed
+                css.left = (bodyWidth - dropdownWidth) / 2; // center dropdown horizontally
+           }
+         // ------------------------------------------------------------
+
         // Determine what the parent element is to use for calciulating the offset
         var $offsetParent = this.$dropdownParent;
 

@@ -237,7 +237,7 @@ class ModelJSTagLib {
 
         switch (model.dataType) {
             case 'number':
-                return '0'
+                return 'undefined'
             case 'stringList':
             case 'image':
                 return '[]'
@@ -628,7 +628,9 @@ class ModelJSTagLib {
         Map options = new HashMap(ctx.viewModel()?.displayOptions ?: [:])
         options.decimalPlaces = decimalPlaces
         String optionString = (options as JSON).toString()
-        observable(ctx, ["{numericString:${optionString}}"])
+        //observable(ctx, ["{numericString:${optionString}}"])
+        ctx.out << INDENT*4 << "${ctx.propertyPath}.${ctx.dataModel.name} = new CounterViewModel({numericString:${optionString}},self.\$context);\n"
+
     }
 
     def dateViewModel(JSModelRenderContext ctx) {
