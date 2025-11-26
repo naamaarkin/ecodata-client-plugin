@@ -30,11 +30,11 @@ public class EditModelWidgetRenderer implements ModelWidgetRenderer {
         context.databindAttrs.add 'with', context.source
         String modelElementText = """<div data-bind='${context.databindAttrs.toString()}' class='input-group'>
                                            <div class='input-group-prepend'>
-                                              <button class='input-group-text' data-bind='click: increase'> + </button>
+                                              <button class='input-group-text' data-bind='click: increase'><i class="fa fa-plus"></i></button>
                                            </div>
                                            <input ${context.attributes.toString()} style='display:inline;' data-bind='value: count'${context.validationAttr} type='number' step='any'/>
                                            <div class='input-group-append'>
-                                               <button class='input-group-text' data-bind='click: decrease'> - </button>
+                                               <button class='input-group-text' data-bind='click: decrease'><i class="fa fa-minus"></i></button>
                                            </div>
                                         </div>"""
 
