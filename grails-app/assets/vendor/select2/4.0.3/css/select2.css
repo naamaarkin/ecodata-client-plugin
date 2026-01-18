@@ -482,3 +482,13 @@
 
 .select2-container--classic.select2-container--open .select2-dropdown {
   border-color: #5897fb; }
+
+@media (max-width: 600px) {
+    /* Applies to the floating select2 container */
+    .select2-container--open {
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        max-width: calc(100% - 20px) !important;
+    }
+}

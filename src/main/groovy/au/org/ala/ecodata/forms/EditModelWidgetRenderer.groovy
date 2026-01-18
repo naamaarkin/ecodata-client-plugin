@@ -27,16 +27,25 @@ public class EditModelWidgetRenderer implements ModelWidgetRenderer {
     @Override
     void renderNumber(WidgetRenderContext context) {
         context.attributes.addClass context.getInputWidth()
-        context.databindAttrs.add 'with', context.source
-        String modelElementText = """<div data-bind='${context.databindAttrs.toString()}' class='input-group'>
-                                           <div class='input-group-prepend'>
-                                              <button class='input-group-text' data-bind='click: increase'><i class="fa fa-plus"></i></button>
-                                           </div>
-                                           <input ${context.attributes.toString()} style='display:inline;' data-bind='value: count'${context.validationAttr} type='number' step='any'/>
-                                           <div class='input-group-append'>
-                                               <button class='input-group-text' data-bind='click: decrease'><i class="fa fa-minus"></i></button>
-                                           </div>
-                                        </div>"""
+        context.databindAttrs.add 'value', context.source
+        String modelElementText = """<div class='input-group'>
+        <div class='input-group-prepend'>
+            <button type="button" class='input-group-text' data-bind='click: ${context.source}.increase'>
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+
+        <input ${context.attributes.toString()}
+               style='display:inline;'
+               data-bind='${context.databindAttrs.toString()}'${context.validationAttr}
+               type='number' step='any'/>
+
+        <div class='input-group-append'>
+            <button type="button" class='input-group-text' data-bind='click: ${context.source}.decrease'>
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>"""
 
         String units = context.unitsToRender()
         if (units) {
@@ -46,6 +55,7 @@ public class EditModelWidgetRenderer implements ModelWidgetRenderer {
             context.writer << modelElementText
         }
     }
+
 
     private void renderWithAddon(String addOnText, String modelElementText, writer) {
         writer << "<div class=\"input-group\">"

@@ -51,14 +51,6 @@ $.fn.select2.amd.require(["select2/utils",'select2/dropdown/attachBody'], functi
             };
         }
 
-         // --- Added code: adjust left positioning on small screens ---
-          var dropdownWidth = this.$dropdown.outerWidth(false);
-          var bodyWidth = $("body").outerWidth();
-
-           if (window.innerWidth < 600) { // adjust threshold as needed
-                css.left = (bodyWidth - dropdownWidth) / 2; // center dropdown horizontally
-           }
-         // ------------------------------------------------------------
 
         // Determine what the parent element is to use for calciulating the offset
         var $offsetParent = this.$dropdownParent;
@@ -97,6 +89,22 @@ $.fn.select2.amd.require(["select2/utils",'select2/dropdown/attachBody'], functi
                 .removeClass('select2-container--below select2-container--above')
                 .addClass('select2-container--' + newDirection +' dropdown-right');
         }
+
+                var bodyWidth = $("body").outerWidth();
+                var dropdownWidth = this.$dropdown.outerWidth(false);
+
+                if (window.innerWidth < 600 && css.left !== undefined) {
+                    // Center horizontally within viewport
+                    css.left = Math.max(10, (bodyWidth - dropdownWidth) / 2 - parentOffset.left);
+                }
+
+                // Prevent cutoff on either side
+                if (css.left + dropdownWidth > bodyWidth) {
+                    css.left = Math.max(0, bodyWidth - dropdownWidth - 10);
+                }
+                if (css.left < 0) {
+                    css.left = 10;
+                }
 
         this.$dropdownContainer.css(css);
     };

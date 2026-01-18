@@ -1,20 +1,27 @@
-var CounterViewModel = function(options, context){
-    var self = this;
+function CounterViewModel(options, context) {
+    var count = ko.observable(0);
 
-    self.count = ko.observable(0);
-    self.toJS = function(){
-        return self.count();
-    }
-    self.toJSON = function(){
-        return self.toJS();
-    }
-    self.increase = function(){
-        self.count(Number(self.count())+1);
-    }
-    self.decrease = function(){
-        var current = Number(self.count());
-        if(self.count() > 0){
-            self.count(current -1);
-        }
-    }
+    // Optional: coerce numeric input
+    count.subscribe(function(v){
+        var n = Number(v);
+        if (isNaN(n)) n = 0;
+        // avoid infinite loop: only write back if different
+        if (n !== v) count(n);
+    });
+
+    count.increase = function() {
+        var current = Number(count()) || 0;
+        count(current + 1);
+    };
+
+    count.decrease = function() {
+        var current = Number(count()) || 0;
+        if (current > 0) count(current - 1);
+    };
+
+    // For libraries that call toJS/toJSON on objects:
+    count.toJS = function(){ return count(); };
+    count.toJSON = function(){ return count(); };
+
+    return count; // IMPORTANT
 }

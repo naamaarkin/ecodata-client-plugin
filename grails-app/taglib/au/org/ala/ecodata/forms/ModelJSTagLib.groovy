@@ -629,7 +629,7 @@ class ModelJSTagLib {
         options.decimalPlaces = decimalPlaces
         String optionString = (options as JSON).toString()
         //observable(ctx, ["{numericString:${optionString}}"])
-        ctx.out << INDENT*4 << "${ctx.propertyPath}.${ctx.dataModel.name} = new CounterViewModel({numericString:${optionString}},self.\$context);\n"
+        ctx.out << INDENT*4 << "${ctx.propertyPath}.${ctx.dataModel.name} = CounterViewModel({numericString:${optionString}},self.\$context);\n"
 
     }
 
